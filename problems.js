@@ -3,13 +3,14 @@
 // Expected Output : 34223
 
 function reverse(input) {
+    let sign;
     if (input >= 0) {
-        var sign = 1;
+        sign = 1;
     } else {
-        var sign = -1;
+        sign = -1;
         input *= -1;
     }
-    var result = 0;
+    let result = 0;
     while (input > 0) {
         result *= 10;
         remain = input % 10;
@@ -32,7 +33,7 @@ console.log(reverse(-12345));
 // A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
 
 function isPalindrome(input) {
-    var len = input.length;
+    let len = input.length;
     for (let i = 0; i < len / 2; i++) {
         if (input[i] != input[len - 1 - i])
             return false;
@@ -139,7 +140,7 @@ console.log(countVowels(""));   //0
 function checkPrime(input) {
     if (input <= 1)
         return false;
-    var maxPossible = Math.sqrt(input);
+    let maxPossible = Math.sqrt(input);
     for (let i = 2; i <= maxPossible; i++) {
         if (input % i === 0)
             return false;
@@ -192,10 +193,10 @@ console.log(getIdentityMatrix(5));
 function findSeconds(input) {
     if (input.length < 2)
         return null;
-    var minimum = Math.min(...input);
-    var maximum = Math.max(...input);
-    var secondMinimum = Math.min(...input.filter(n => n != minimum));
-    var secondMaximum = Math.max(...input.filter(n => n != maximum));
+    let minimum = Math.min(...input);
+    let maximum = Math.max(...input);
+    let secondMinimum = Math.min(...input.filter(n => n != minimum));
+    let secondMaximum = Math.max(...input.filter(n => n != maximum));
     return [secondMinimum, secondMaximum];
 }
 
@@ -216,8 +217,8 @@ console.log(findSeconds([1,4,3,5,2]));
 function checkPerfectNumber(input) {
     if (input <= 0)
         return false;
-    var maxCandidate = Math.sqrt(input);
-    var sum = 0;
+    let maxCandidate = Math.sqrt(input);
+    let sum = 0;
     if (maxCandidate * maxCandidate === input) {
         sum += maxCandidate
     }
@@ -247,7 +248,7 @@ console.log(checkPerfectNumber(-1));    // false
 
 function getFactors(input) {
     const factors = [];
-    var maxCandidate = Math.sqrt(input);
+    let maxCandidate = Math.sqrt(input);
     for (let i = 1; i < maxCandidate; i++) {
         if (input % i == 0) {
             factors.push(i);
@@ -329,7 +330,7 @@ console.log(exponential(2, 5));
 
 function extractUniqueChars(input) {
     const hash = {};
-    var unique = "";
+    let unique = "";
     for (let i = 0; i < input.length; i++) {
         if (!hash[input[i]]) {
             unique += input[i];
@@ -367,8 +368,8 @@ console.log(getOccurence("t"));
 // Note : A binary search searches by splitting an array into smaller and smaller chunks until it finds the desired value.
 
 function binarySearch(nums, target) {
-    var left = 0;
-    var right = nums.length - 1;
+    let left = 0;
+    let right = nums.length - 1;
     while (left <= right) {
         mid = Math.floor((left + right) / 2);
         if (nums[mid] == target)
@@ -409,7 +410,7 @@ console.log(getLargers([], 5));
 // Sample character list : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 function generateID(charlist, length) {
-    var result = "";
+    let result = "";
     for (let i = 0; i < length; i++) {
         result += charlist[Math.floor(charlist.length * Math.random())];
     }
@@ -472,7 +473,7 @@ function findFirstNotRepeat(input) {
         count[curr] = (count[curr] || 0) + 1;
         return count;
     }, {});
-    var result = input.split("").find((c) => counter[c] === 1);
+    let result = input.split("").find((c) => counter[c] === 1);
     return result;
 }
 
@@ -492,7 +493,7 @@ function bubbleSort(nums) {
     for (let i = 0; i < nums.length; i++) {
         for (let j = 0; j < nums.length - 1 - i; j++) {
             if (nums[j] < nums[j + 1]) {
-                var temp = nums[j];
+                let temp = nums[j];
                 nums[j] = nums[j + 1];
                 nums[j + 1] = temp;
             }
@@ -512,7 +513,7 @@ console.log(nums);
 // Expected output : "United States of America"
 
 function findLongestName (names) {
-    var target = "";
+    let target = "";
     names.forEach((name) => {
         if (name.replace(" ", "").length > target.length)
             target = name; 
@@ -528,9 +529,9 @@ console.log(findLongestName(["abcd", "a b c"]));
 
 function longestSubstr(input) {
     const hash = {};
-    var max = -1;
-    var maxStart = 0;
-    var start = 0;
+    let max = -1;
+    let maxStart = 0;
+    let start = 0;
     for (let i = 0; i < input.length; i++) {
         if (hash[input[i]] != undefined && hash[input[i]] >= start) {
             if (i - start> max) {
@@ -576,11 +577,11 @@ function longestPalindrome(input) {
     }
     if (input.length <= 1)
         return input;
-    var start = 0;
-    var maxLength = 0;
+    let start = 0;
+    let maxLength = 0;
     for (let i = 0; i < input.length; i++) {
-        var len1 = expand(input, i, i);
-        var len2 = expand(input, i, i + 1);
+        let len1 = expand(input, i, i);
+        let len2 = expand(input, i, i + 1);
         if (len1 >= len2 && len1 > maxLength) {
             start = i - (len1 - 1) / 2;
             maxLength = len1;
